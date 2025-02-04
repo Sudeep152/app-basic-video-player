@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.daggerHilt)
+    kotlin("kapt")
 }
 
 android {
@@ -33,6 +35,9 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -48,4 +53,18 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // Hilt Dependency
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+    //Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.okhttp)
+    //moshi
+    implementation(libs.moshi)
+    implementation(libs.moshi.kotlin)
+    implementation(libs.moshi.converter)
+    kapt(libs.moshi.kotlin.codegen)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.lottie)
 }
